@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <section>
+        <h1>Filter Image Gallery </h1>
+        <ul>
+            <li class="active">All Menu</li>
+            <li>Food</li>
+            <li>Car</li>
+            <li>House</li>
+            <li>Travel</li>
+        </ul>
+
+        <div class="product">
+            <img src="Images.jpg/Food1.jpg" data-filter="food">
+            <img src="Images.jpg/Food2.jpg" data-filter="food">
+            <img src="Images.jpg/Food3.jpg" data-filter="food">
+            <img src="Images.jpg/Food2.jpg" data-filter="food">
+            <img src="Images.jpg/car2.jpg" data-filter="car">
+            <img src="Images.jpg/car3.jpg" data-filter="car">
+            <img src="Images.jpg/car1.jpg" data-filter="car">
+            <img src="Images.jpg/car2.jpg" data-filter="car">
+            <img src="Images.jpg/home1.jpg" data-filter="house">
+            <img src="Images.jpg/home2.jpg" data-filter="house">
+            <img src="Images.jpg/home2.jpg" data-filter="house">
+            <img src="Images.jpg/home1.jpg" data-filter="house">
+            <img src="Images.jpg/travel1.jpg" data-filter="travel">
+            <img src="Images.jpg/travel2.jpg" data-filter="travel">
+            <img src="Images.jpg/travel3.jpg" data-filter="travel">
+            <img src="Images.jpg/travel4.jpg" data-filter="travel">
+        </div>
+    </section>
+
+    <script>
+        const liItem = document.querySelectorAll('ul li');
+        const imgItem = document.querySelectorAll('.product img');
+
+        liItem.forEach(li => {
+           li.onclick = function() {
+            //active
+            liItem.forEach(li => {
+                li.className = "";
+            })
+            li.className = "active";
+
+            //Filter
+            const value = li.textContent;
+            imgItem.forEach(img => {
+                img.style.display = 'none';
+                if (img.getAttribute('data-filter') == value.toLowerCase() || value == "All Menu") {
+                    img.style.display = 'block';
+                }
+            })
+           }
+        });
+    </script>
+</body>
+</html>
